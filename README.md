@@ -1,3 +1,11 @@
+# Start Project
+
+On Windows Run run.bat
+On Unix OS Run run.sh
+
+Login Username : admin
+Password : 1234
+
 # MiniStockAngularUdemy
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.2.

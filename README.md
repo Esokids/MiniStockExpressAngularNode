@@ -1,10 +1,11 @@
 # Start Project
 
-On Windows Run run.bat
-On Unix OS Run run.sh
+On Windows Run `run.bat`
+On Unix OS Run `run.sh`
 
-Login Username : admin
-Password : 1234
+Login ID
+`Username : admin`
+`Password : 1234`
 
 # MiniStockAngularUdemy
 

@@ -1,0 +1,39 @@
+<h1>Welcome To Dashboard</h1>
+
+<button mat-flat-button color="primary" (click)="openDialog()">
+  <mat-icon>add</mat-icon>
+  New Product
+</button>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th width="50%">name</th>
+      <th class="text-right" width="30%">price</th>
+      <th width="20%"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of products">
+      <td>{{ item.name }}</td>
+      <td class="text-right">{{ item.price }}</td>
+      <td class="text-center">
+        <button
+          mat-mini-fab
+          color="primary"
+          (click)="handleEditClicked(item.id)"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        &nbsp;
+        <button
+          mat-mini-fab
+          color="warn"
+          (click)="handleRemoveClicked(item.id)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

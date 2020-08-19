@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { ProductService } from '../api/product.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-product',
@@ -9,19 +9,36 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogProductComponent implements OnInit {
   product = {
+    id: '',
     name: '',
     price: '',
   };
 
   constructor(
     public productService: ProductService,
-    public dialogRef: MatDialogRef<DialogProductComponent>
-  ) {}
+    public dialogRef: MatDialogRef<DialogProductComponent>,
+    @Inject(MAT_DIALOG_DATA) data
+  ) {
+    if (data) {
+      this.product.id = data.id;
+      this.product.name = data.name;
+      this.product.price = data.price;
+    } else {
+      (this.product.name = ''), (this.product.price = '');
+    }
+  }
 
   ngOnInit(): void {}
 
   save() {
     this.productService.save(this.product).subscribe((res) => {
+      console.log(res);
+    });
+    this.dialogRef.close();
+  }
+
+  update() {
+    this.productService.update(this.product).subscribe((res) => {
       console.log(res);
     });
     this.dialogRef.close();

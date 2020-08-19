@@ -21,12 +21,12 @@ app.get("/products", (req, res) => {
 app.post("/products", (req, res) => {
   const { name, price } = req.body;
   products.push({ id: uuidv4(), name, price });
-  res.status(201).send("OK");
+  res.sendStatus(201);
 });
 
 app.delete("/products/:id", (req, res) => {
   products = products.filter((x) => x.id != req.params.id);
-  res.status(200).send("OK");
+  res.sendStatus(200);
 });
 
 app.put("/products/:id", (req, res) => {
@@ -37,7 +37,7 @@ app.put("/products/:id", (req, res) => {
   product.name = name;
   product.price = price;
 
-  res.status(200).send("OK");
+  res.sendStatus(200);
 });
 
 app.listen(3000, () => {

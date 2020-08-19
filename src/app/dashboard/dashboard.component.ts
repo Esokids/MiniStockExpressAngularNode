@@ -1,7 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ProductService } from '../api/product.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogProductComponent } from '../dialog-product/dialog-product.component';
+import { ProductModel } from '../api/ProductModel';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,7 +38,13 @@ export class DashboardComponent implements OnInit {
   }
 
   handleEditClicked(id) {
+    const _product: ProductModel = this.products.find((e) => e.id == id);
+
     this.dialog.open(DialogProductComponent, {
+      data: {
+        name: _product.name,
+        price: _product.price,
+      },
       width: '950px',
     });
   }

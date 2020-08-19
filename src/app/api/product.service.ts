@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ProductModel } from './ProductModel';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,13 @@ export class ProductService {
   }
 
   remove(id: any): Observable<any> {
-    console.log(`${this.apiUrl}/products/${id}`);
+    // console.log(`${this.apiUrl}/products/${id}`);
     return this.http.delete(`${this.apiUrl}/products/${id}`);
+  }
+
+  update(product: any): Observable<any> {
+    console.log(product);
+    // console.log(`${this.apiUrl}/products/${product.id}`);
+    return this.http.put(`${this.apiUrl}/products/${product.id}`, product);
   }
 }

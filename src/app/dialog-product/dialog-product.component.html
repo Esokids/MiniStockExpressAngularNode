@@ -1,23 +1,23 @@
 <h2 mat-dialog-title>
-    <mat-icon>edit</mat-icon>
-    Form Product
+  <mat-icon>edit</mat-icon>
+  Form Product
 </h2>
 
 <mat-dialog-content>
-    <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput [(ngModel)]="product.name" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="product.name" />
+  </mat-form-field>
 
-    <mat-form-field>
-        <mat-label>Price</mat-label>
-        <input matInput [(ngModel)]="product.price" />
-    </mat-form-field>
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input matInput [(ngModel)]="product.price" />
+  </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button mat-flat-button color="primary" (click)="save()">
-        <mat-icon>check</mat-icon>
-        Save
-    </button>
+  <button mat-flat-button color="primary" (click)="save()">
+    <mat-icon>check</mat-icon>
+    Save
+  </button>
 </mat-dialog-actions>

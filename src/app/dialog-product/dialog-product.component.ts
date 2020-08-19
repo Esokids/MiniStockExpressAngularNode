@@ -31,7 +31,9 @@ export class DialogProductComponent implements OnInit {
   ngOnInit(): void {}
 
   save() {
-    this.productService.save(this.product).subscribe((res) => {
+    this.productService.save(this.product).subscribe({
+      next: (next) => console.log(next),
+      error: (error) => error.toString(),
       // console.log(res);
     });
     this.dialogRef.close();

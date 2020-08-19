@@ -1,7 +1,6 @@
 const express = require("express");
 const { v4: uuidv4 } = require("uuid");
 const cors = require("cors");
-const { ok } = require("assert");
 
 const app = express();
 
@@ -16,14 +15,14 @@ let products = [
 
 app.get("/products", (req, res) => {
   // console.log(products);
-  res.sendStatus(200).send(products);
+  res.send(products);
 });
 
 app.post("/products", (req, res) => {
   const { name, price } = req.body;
   products.push({ id: uuidv4(), name, price });
   // console.log(products);
-  res.sendStatus(201);
+  res.sendStatus(201).send("ok");
 });
 
 app.delete("/products/:id", (req, res) => {

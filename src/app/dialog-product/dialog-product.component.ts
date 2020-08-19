@@ -32,7 +32,7 @@ export class DialogProductComponent implements OnInit {
 
   save() {
     this.productService.save(this.product).subscribe((res) => {
-      console.log(res);
+      // console.log(res);
     });
     this.dialogRef.close();
   }

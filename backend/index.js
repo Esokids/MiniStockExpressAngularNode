@@ -15,12 +15,14 @@ let products = [
 ];
 
 app.get("/products", (req, res) => {
-  res.status(200).send(products);
+  // console.log(products);
+  res.sendStatus(200).send(products);
 });
 
 app.post("/products", (req, res) => {
   const { name, price } = req.body;
   products.push({ id: uuidv4(), name, price });
+  // console.log(products);
   res.sendStatus(201);
 });
 

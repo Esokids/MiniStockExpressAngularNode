@@ -12,18 +12,18 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
 
-  // httpOptions = {
-  //   headers: new HttpHeaders({
-  //     'content-type': 'application/json',
-  //   }),
-  // };
+  httpOptions = {
+    headers: new HttpHeaders({
+      'content-type': 'application/json',
+    }),
+  };
 
   getProduct(): Observable<ProductModel> {
     return this.http.get<ProductModel>(`${this.apiUrl}/products`);
   }
 
   save(product: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/products`, product);
+    return this.http.post(`${this.apiUrl}/products`, product, this.httpOptions);
   }
 
   remove(id: any): Observable<any> {

@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.productService.getProduct().subscribe((data: {}) => {
-      console.log(data);
+      // console.log(data);
       this.products = data;
     });
   }
@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
       })
       .afterClosed()
       .subscribe((data: {}) => {
-        console.log(data);
+        // console.log(data);
         this.ngOnInit();
       });
   }
@@ -40,18 +40,24 @@ export class DashboardComponent implements OnInit {
   handleEditClicked(id) {
     const _product: ProductModel = this.products.find((e) => e.id == id);
 
-    this.dialog.open(DialogProductComponent, {
-      data: {
-        name: _product.name,
-        price: _product.price,
-      },
-      width: '950px',
-    });
+    this.dialog
+      .open(DialogProductComponent, {
+        data: {
+          name: _product.name,
+          price: _product.price,
+        },
+        width: '950px',
+      })
+      .afterClosed()
+      .subscribe((data: {}) => {
+        // console.log(data);
+        this.ngOnInit();
+      });
   }
 
   handleRemoveClicked(id) {
     this.productService.remove(id).subscribe((data: {}) => {
-      console.log(data);
+      // console.log(data);
     });
     this.products = this.products.filter((e) => e.id != id);
   }
